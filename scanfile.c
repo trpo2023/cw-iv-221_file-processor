@@ -14,11 +14,12 @@ FILE* find_file(char* str){//открываем файл
 }
 
 void split_strings(char* s, char** s1, char** s2){//разделяет строку
-    *s2=strtok(s," ");//выделяем первую часть
+    *s2=strtok(s," ");//выделяем расширение
     *s1=*s2;//копируем значение
-    *s2=strtok(NULL," ");//продолжаем, выдел вторую часть
+    *s2=strtok(NULL," ");//продолжаем, выдел имя
     if(strchr(*s2, '\n'))//убираем спуски строки
         *s2=strtok(*s2,"\n");
+    if(s1[0]=='.') s1++;//убираем точки из расширений
     // printf("%s%s\n", s1,s2);
 }
 
@@ -30,7 +31,6 @@ int make_arrays(FILE* f, char** m1, char** m2,  size_t* n){//создаёт ма
     while(fgets(s, 256, f)){
         if(s[0]!='\n'){// пропускаем пустые строки
         split_strings(s, &s1, &s2);
-
         //выделяем память для элемента
         m1[*n]=malloc ( 256 * sizeof( char*) );
         if(m1[*n])//если выделилось
