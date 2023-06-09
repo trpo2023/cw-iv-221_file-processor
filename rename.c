@@ -8,7 +8,6 @@
 void find_ras(char** c){  
    *c=strtok(*c, ".");
    *c=strtok(NULL,".");
-   
 }
 
 void make_new_name(char* newname, char* c, int n, char* nras){
@@ -26,8 +25,17 @@ void make_new_name(char* newname, char* c, int n, char* nras){
    
 }
 
+void rename_and_err(char* oldname, char* newname){
+   int ret = rename(oldname, newname);
+   if(ret!=0){
+      printf("Cant rename file %s\n", oldname);
+      fprintf(stderr, "Error: %d\n", errno);
+      
+   }
+}
+
 void rename_files(char* ras, char* name, DIR* dir,  char* input){
-   printf("-NEW RENAME CYCLE %s\n", ras);
+   // printf("-NEW RENAME CYCLE %s\n", ras);
    rewinddir(dir);
    struct dirent *f; 
    int n=1;
@@ -40,30 +48,20 @@ void rename_files(char* ras, char* name, DIR* dir,  char* input){
       char oldname[256];
       strcpy(oldname, input);
       strcat(oldname,f->d_name);
-
-      
       char *nras=f->d_name;
       find_ras(&nras);
 
       if(strcmp(nras, ras)!=0)
          continue;
 
-      
+   
       char newname[256];
       strcpy(newname, input);
       make_new_name(newname, name, n, nras);
       
+      printf("oldname: %s\n newname: %s\n ---\n", oldname, newname);
       
       rename_and_err(oldname, newname);
       n++;
-   }
-}
-
-void rename_and_err(char* oldname, char* newname){
-   int ret = rename(oldname, newname);
-   if(ret!=0){
-      printf("Cant rename file %s", oldname);
-      fprintf(stderr, "Error: %d\n", errno);
-      
    }
 }

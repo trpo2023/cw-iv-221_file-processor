@@ -13,7 +13,16 @@ int check_input(char* adres){
         printf("input dir: ");
         return -1;
     }
+    
     return 0;
+}
+
+void check_last_symbol(char* adres){
+    // printf("Last symbol^ %c\n", adres[strlen(adres)-1]);
+    if(adres[strlen(adres)-1]!='/'){
+        strcat(adres,"/");
+    }
+    // printf("Last symbol^ %c\n", adres[strlen(adres)-1]);
 }
 
 DIR* get_dir(char* dadres){
@@ -29,10 +38,11 @@ DIR* get_dir(char* dadres){
         printf("Quiting... \n");
         return NULL;
     }
+    check_last_symbol(dadres);
 
     DIR* dir = opendir(dadres);
     if(!dir) {
-        printf("Cant find directory!\n");
+        printf("Cant find directory!\n\n");
         get_dir(dadres);
     }
     return dir;

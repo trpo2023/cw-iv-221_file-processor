@@ -1,18 +1,29 @@
 #include "rename.h"
 #include "opendir.h"
+#include "scanfile.h"
 #include <stdio.h>
 #include <stdio.h>
 #include <dirent.h>
 #include <stdlib.h>
 #include <sys/types.h>
 #include <string.h>
-int main()
-{
 
+int main(int argc, char* argv[]){
+    // argc - кол-во аргументов. Зависи от вызова функции
+    // argv - сохраняет эти аргументы
+    
+    char** ras; //массив расширений
+    char** newname; //массив шаблонов
+    ras = malloc ( 256 * sizeof( char *) );
+    newname = malloc ( 256 * sizeof( char *) );
+    
+    size_t n=0;// кол-во элементов
 
-    char* ras[] = {"txt", "png"};
-    char* newname[] = {"TEXTFILE", "Photo"};
-    size_t n = 2;
+    FILE* f=find_file(argv[1]);
+    if(f && ras && newname){//если всё открылось
+        make_arrays(f, ras, newname, &n);//заполняем массивы
+        printf("файл считан успешно\n");
+    }
 
     char input[256];
     DIR* dir = get_dir(input);
@@ -23,7 +34,5 @@ int main()
     for(int i=0; i<n; i++){
         rename_files(ras[i], newname[i], dir, input);
     } 
-    
-    
-    return 0;
 }
+
