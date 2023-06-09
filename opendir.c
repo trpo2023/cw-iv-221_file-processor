@@ -26,7 +26,9 @@ void check_last_symbol(char* adres){
 }
 
 DIR* get_dir(char* dadres){
+    
     printf("path has to be like /home/user/folder/\n");
+    printf("for quit type 'q'\n");
     printf("input dir: ");
     
     scanf("%s", dadres);
@@ -42,7 +44,7 @@ DIR* get_dir(char* dadres){
 
     DIR* dir = opendir(dadres);
     if(!dir) {
-        printf("Cant find directory!\n\n");
+        printf("Cant find directory!\n");
         get_dir(dadres);
     }
     return dir;

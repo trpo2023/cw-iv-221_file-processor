@@ -35,7 +35,6 @@ void rename_and_err(char* oldname, char* newname){
 }
 
 void rename_files(char* ras, char* name, DIR* dir,  char* input){
-   // printf("-NEW RENAME CYCLE %s\n", ras);
    rewinddir(dir);
    struct dirent *f; 
    int n=1;
@@ -59,7 +58,7 @@ void rename_files(char* ras, char* name, DIR* dir,  char* input){
       strcpy(newname, input);
       make_new_name(newname, name, n, nras);
       
-      printf("oldname: %s\n newname: %s\n ---\n", oldname, newname);
+      printf("oldname: %s\nnewname: %s\n ---\n", oldname, newname);
       
       rename_and_err(oldname, newname);
       n++;

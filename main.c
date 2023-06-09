@@ -22,17 +22,20 @@ int main(int argc, char* argv[]){
     FILE* f=find_file(argv[1]);
     if(f && ras && newname){//если всё открылось
         make_arrays(f, ras, newname, &n);//заполняем массивы
-        printf("файл считан успешно\n");
+        printf("file readed successfully\n");
     }
 
+    printf("Please input path to folder with files\n");
     char input[256];
     DIR* dir = get_dir(input);
     if (!dir) {
         return 1;
     }
 
+    printf("Renaming files:\n");
     for(int i=0; i<n; i++){
         rename_files(ras[i], newname[i], dir, input);
-    } 
+    }
+    printf("renaming is finished. \n");
 }
 

@@ -25,7 +25,7 @@ void split_strings(char* s, char** s1, char** s2){//разделяет стро�
     // printf("%s%s\n", s1,s2);
 }
 
-int make_arrays(FILE* f, char** m1, char** m2,  size_t* n){//создаёт массивы, с которыми мы работаем
+void make_arrays(FILE* f, char** m1, char** m2,  size_t* n){//создаёт массивы, с которыми мы работаем
     char s[256];// строка
     static char* s1;// первая часть
     static char* s2;// втроая
@@ -39,7 +39,7 @@ int make_arrays(FILE* f, char** m1, char** m2,  size_t* n){//создаёт ма
             strcpy(m1[*n], s1);//копируем значение
         else{
             printf("Can't malloc for array");
-            return -1;
+            return;
         }
 
         m2[*n]=malloc ( 256 * sizeof( char*) );
@@ -48,12 +48,11 @@ int make_arrays(FILE* f, char** m1, char** m2,  size_t* n){//создаёт ма
         }
         else{
             printf("Can't malloc for array");
-            return -1;
+            return;
         }
         
         *n = *n+1;
     }
-    return 0;
 }
 
 void print_arr(char** m1, size_t n){//выводит массив
