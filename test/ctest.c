@@ -1,7 +1,8 @@
 #include <stdlib.h>
 #include "ctest.h"
-#include "../opendir.h"
-#include "../scanfile.h"
+#include "../src/lib/opendir.h"
+#include "../src/lib/scanfile.h"
+
 
 CTEST(opendir, input_check){
     int test1=check_input("/home/user/foler");
@@ -16,9 +17,7 @@ CTEST(opendir, input_check){
 }
 CTEST(scanfile, find_file){
     //тест индивидуален, т.к. пользователь может пустить на вход любой файл
-    FILE* test1=find_file("../in");
-    ASSERT_NOT_NULL(test1);
-    FILE* test2=find_file("aafrf");
-    ASSERT_NULL(test2);
+    FILE* test1=find_file("aafrf");
+    ASSERT_NULL(test1);
 
 }

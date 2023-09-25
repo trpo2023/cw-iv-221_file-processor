@@ -1,6 +1,6 @@
-#include "rename.h"
-#include "opendir.h"
-#include "scanfile.h"
+#include "lib/rename.h"
+#include "lib/opendir.h"
+#include "lib/scanfile.h"
 #include <stdio.h>
 #include <stdio.h>
 #include <dirent.h>
@@ -11,14 +11,12 @@
 int main(int argc, char* argv[]){
     // argc - кол-во аргументов. Зависи от вызова функции
     // argv - сохраняет эти аргументы
-    
     char** ras; //массив расширений
     char** newname; //массив шаблонов
     ras = malloc ( 256 * sizeof( char *) );
     newname = malloc ( 256 * sizeof( char *) );
     
     size_t n=0;// кол-во элементов
-
     FILE* f=find_file(argv[1]);
     if(f && ras && newname){//если всё открылось
         make_arrays(f, ras, newname, &n);//заполняем массивы
