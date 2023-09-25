@@ -49,7 +49,6 @@ Cpp11BracedListStyle: true
 DerivePointerAlignment: false
 ExperimentalAutoDetectBinPacking: false
 FixNamespaceComments: false
-IncludeBlocks:   Preserve
 IndentCaseLabels: false
 IndentPPDirectives: None
 IndentWidth:     4

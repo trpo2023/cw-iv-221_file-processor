@@ -1,6 +1,6 @@
 .PHONY: all clean test main
 
-all: main
+all: main test
 
 main: obj/proj/lib/opendir.o obj/proj/lib/rename.o obj/proj/lib/scanfile.o obj/proj/test.o
 	gcc -Wall $^ -o bin/proj/main
