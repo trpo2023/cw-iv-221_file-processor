@@ -17,7 +17,6 @@ CTEST(opendir, input_check)
 }
 CTEST(scanfile, find_file)
 {
-	
 	FILE* test1 = find_file("aafrf");
 	ASSERT_NULL(test1);
 }

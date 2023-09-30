@@ -27,13 +27,14 @@ void make_new_name(char* newname, char* c, int n, char* nras)
 	strcat(newname, nras);
 }
 
-void rename_and_err(char* oldname, char* newname)
+int rename_and_err(char* oldname, char* newname)
 {
 	int ret = rename(oldname, newname);
 	if (ret != 0) {
 		printf("Cant rename file %s\n", oldname);
 		fprintf(stderr, "Error: %d\n", errno);
 	}
+	return ret;
 }
 
 void rename_files(char* ras, char* name, DIR* dir, char* input)
@@ -52,7 +53,7 @@ void rename_files(char* ras, char* name, DIR* dir, char* input)
 		char* nras = f->d_name;
 		find_ras(&nras);
 
-		if (strcmp(nras, ras) != 0) 
+		if (strcmp(nras, ras) != 0)
 			continue;
 
 		char newname[256];

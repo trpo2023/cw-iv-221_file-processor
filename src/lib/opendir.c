@@ -19,11 +19,9 @@ int check_input(char* adres)
 
 void check_last_symbol(char* adres)
 {
-	
 	if (adres[strlen(adres) - 1] != '/') {
 		strcat(adres, "/");
 	}
-	
 }
 
 DIR* get_dir(char* dadres)
@@ -36,7 +34,7 @@ DIR* get_dir(char* dadres)
 	while (check_input(dadres) == (-1)) {
 		scanf("%s", dadres);
 	}
-	if (check_input(dadres) == 1) { 
+	if (check_input(dadres) == 1) {
 		printf("Quiting... \n");
 		return NULL;
 	}
