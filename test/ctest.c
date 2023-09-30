@@ -17,7 +17,7 @@ CTEST(opendir, input_check)
 }
 CTEST(scanfile, find_file)
 {
-	//тест индивидуален, т.к. пользователь может пустить на вход любой файл
+	
 	FILE* test1 = find_file("aafrf");
 	ASSERT_NULL(test1);
 }

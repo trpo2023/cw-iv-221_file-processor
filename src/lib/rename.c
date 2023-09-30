@@ -52,7 +52,7 @@ void rename_files(char* ras, char* name, DIR* dir, char* input)
 		char* nras = f->d_name;
 		find_ras(&nras);
 
-		if (strcmp(nras, ras) != 0)
+		if (strcmp(nras, ras) != 0) 
 			continue;
 
 		char newname[256];
