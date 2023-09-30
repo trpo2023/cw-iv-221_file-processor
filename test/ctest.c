@@ -1,6 +1,7 @@
 #include "ctest.h"
 #include "../src/lib/opendir.h"
 #include "../src/lib/scanfile.h"
+#include "../src/lib/rename.h"
 #include <stdlib.h>
 
 CTEST(opendir, input_check)
@@ -19,4 +20,11 @@ CTEST(scanfile, find_file)
 {
 	FILE* test1 = find_file("aafrf");
 	ASSERT_NULL(test1);
+}
+
+CTEST(rename, rename_and_err)
+{
+	int test1 = rename_and_err("testi.txt", "testy.txt" );
+	ASSERT_NOT_NULL(test1);
+	
 }

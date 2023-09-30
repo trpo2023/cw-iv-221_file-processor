@@ -14,16 +14,19 @@ obj/proj/test.o: src/main.c
 	gcc  -c $^ -o $@
 
 
-test: obj/test/ctest.o obj/test/opendir.o obj/test/scanfile.o obj/test/main.o
+test: obj/test/ctest.o obj/test/opendir.o obj/test/scanfile.o obj/test/main.o obj/test/rename.o
 	gcc -w $^ -o bin/test/test
 obj/test/ctest.o: test/ctest.c
 	gcc -w -c $^ -o $@
 obj/test/main.o: test/main.c
 	gcc -w -c $^ -o $@
+obj/test/rename.o: src/lib/rename.c
+	gcc  -c $^ -o $@
 obj/test/opendir.o: src/lib/opendir.c
 	gcc -w -c $^ -o $@
 obj/test/scanfile.o: src/lib/scanfile.c
 	gcc -w -c $^ -o $@
+
 
 clear:
 	rm obj/proj/*.[oad]
