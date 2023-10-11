@@ -1,6 +1,9 @@
-#include "lib/opendir.h"
-#include "lib/rename.h"
-#include "lib/scanfile.h"
+// #include "lib/opendir.h"
+// #include "lib/rename.h"
+// #include "lib/scanfile.h"
+#include <opendir.h>
+#include <rename.h>
+#include <scanfile.h>
 #include <dirent.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -34,4 +37,11 @@ int main(int argc, char* argv[])
 		rename_files(ras[i], newname[i], dir, input);
 	}
 	printf("renaming is finished. \n");
+
+	for (int i = 0; i < n; i++) {
+		free(ras[i]);
+		free(newname[i]);
+	}
+	free(ras);
+	free(newname);
 }
