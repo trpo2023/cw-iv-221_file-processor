@@ -1,7 +1,7 @@
-#include "ctest.h"
-#include "../src/lib/opendir.h"
-#include "../src/lib/scanfile.h"
-#include "../src/lib/rename.h"
+#include <test/ctest.h>
+#include <src/lib/opendir.h>
+#include <src/lib/rename.h>
+#include <src/lib/scanfile.h>
 #include <stdlib.h>
 
 CTEST(opendir, input_check)
@@ -25,6 +25,7 @@ CTEST(scanfile, find_file)
 CTEST(rename, rename_and_err)
 {
 	int test1 = rename_and_err("testi.txt", "testy.txt" );
-	ASSERT_NOT_NULL(test1);
+	int expected1 = 0;
+	ASSERT_NOT_EQUAL(expected1, test1);
 	
 }
