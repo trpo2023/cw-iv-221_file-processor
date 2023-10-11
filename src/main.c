@@ -10,6 +10,15 @@
 #include <string.h>
 #include <sys/types.h>
 
+void Free_memory(char** ms1, char** ms2, int n){
+	for (int i = 0; i < n; i++) {
+		free(ms1[i]);
+		free(ms2[i]);
+	}
+	free(ms1);
+	free(ms2);
+}
+
 int main(int argc, char* argv[])
 {
 	
@@ -38,10 +47,5 @@ int main(int argc, char* argv[])
 	}
 	printf("renaming is finished. \n");
 
-	for (int i = 0; i < n; i++) {
-		free(ras[i]);
-		free(newname[i]);
-	}
-	free(ras);
-	free(newname);
+	Free_memory(ras, newname, n);
 }
