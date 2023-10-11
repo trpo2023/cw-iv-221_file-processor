@@ -23,9 +23,9 @@ obj/proj/lib/mainlib.a: obj/proj/lib/opendir.o obj/proj/lib/rename.o obj/proj/li
 test: obj/test/main.o obj/proj/lib/opendir.o obj/proj/lib/rename.o obj/proj/lib/scanfile.o obj/test/ctest.o
 	gcc $^ -o bin/test/main
 obj/test/main.o: test/main.c
-	gcc -Wall -c $^ -o $@ -I $(test_libs)
+	gcc -w -c $^ -o $@ -I $(test_libs)
 obj/test/ctest.o: test/ctest.c
-	gcc -Wall -c $^ -o $@ -I $(test_libs)
+	gcc -w -c $^ -o $@ -I $(test_libs)
 obj/test/testlib.a: obj/proj/lib/opendir.o obj/proj/lib/rename.o obj/proj/lib/scanfile.o obj/test/ctest.o
 	ar rcs $@ $^
 
