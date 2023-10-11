@@ -1,6 +1,3 @@
-// #include "lib/opendir.h"
-// #include "lib/rename.h"
-// #include "lib/scanfile.h"
 #include <opendir.h>
 #include <rename.h>
 #include <scanfile.h>
@@ -10,7 +7,8 @@
 #include <string.h>
 #include <sys/types.h>
 
-void Free_memory(char** ms1, char** ms2, int n){
+void Free_memory(char** ms1, char** ms2, int n)
+{
 	for (int i = 0; i < n; i++) {
 		free(ms1[i]);
 		free(ms2[i]);
@@ -21,16 +19,15 @@ void Free_memory(char** ms1, char** ms2, int n){
 
 int main(int argc, char* argv[])
 {
-	
-	char** ras;	
-	char** newname; 
+	char** ras;
+	char** newname;
 	ras = malloc(256 * sizeof(char*));
 	newname = malloc(256 * sizeof(char*));
 
-	size_t n = 0; 
+	size_t n = 0;
 	FILE* f = find_file(argv[1]);
-	if (f && ras && newname) {		  
-		make_arrays(f, ras, newname, &n); 
+	if (f && ras && newname) {
+		make_arrays(f, ras, newname, &n);
 		printf("file readed successfully\n");
 	}
 

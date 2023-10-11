@@ -24,8 +24,7 @@ CTEST(scanfile, find_file)
 
 CTEST(rename, rename_and_err)
 {
-	int test1 = rename_and_err("testi.txt", "testy.txt" );
+	int test1 = rename_and_err("testi.txt", "testy.txt");
 	int expected1 = 0;
 	ASSERT_NOT_EQUAL(expected1, test1);
-	
 }
